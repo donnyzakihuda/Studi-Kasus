@@ -44,17 +44,13 @@ void loop() {
   float tegangan_V = ina219.getBusVoltage_V();
    
   digitalWrite(Led, potValue >= 4000 ? HIGH : LOW);
-  
   display.clearDisplay();
   display.setTextSize(1);             
   display.setTextColor(SSD1306_WHITE);
   display.setCursor(0, 10);            
-  display.print("PWM: %.2f %");
-  display.println(value);
-  display.print("V : %.2f V\n");
-  display.println(tegangan_V);
-  display.print("I : %.2f mA\n");
-  display.println(arus_mA);
+  display.printf("PWM: %.2f %", value);
+  display.printf("V : %.2f V\n", tegangan_V);
+  display.printf("I : %.2f mA\n", arus_mA);
   
   display.display();   
   if (millis() - lastSend >= intervalThingspeak) {
